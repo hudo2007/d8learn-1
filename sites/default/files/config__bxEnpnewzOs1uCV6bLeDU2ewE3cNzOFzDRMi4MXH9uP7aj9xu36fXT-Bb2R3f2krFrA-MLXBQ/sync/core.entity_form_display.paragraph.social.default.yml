@@ -1,0 +1,33 @@
+uuid: bd0bd41a-e74b-4cb9-9609-9e1ea88a3c7f
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.field.paragraph.social.field_embed_code
+    - field.field.paragraph.social.field_link
+    - paragraphs.paragraphs_type.social
+  module:
+    - link
+    - text
+id: paragraph.social.default
+targetEntityType: paragraph
+bundle: social
+mode: default
+content:
+  field_embed_code:
+    weight: 0
+    settings:
+      size: 105
+      placeholder: ''
+    third_party_settings: {  }
+    type: text_textfield
+  field_link:
+    weight: 1
+    settings:
+      placeholder_url: ''
+      placeholder_title: ''
+    third_party_settings: {  }
+    type: link_default
+hidden:
+  created: true
+  uid: true

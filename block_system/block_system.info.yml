@@ -1,0 +1,4 @@
+name: Block System tweaks
+description: Demo on how to populate the fields of custom block type instances.
+core: 8.x
+type: module

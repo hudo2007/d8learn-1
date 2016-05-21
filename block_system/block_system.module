@@ -1,0 +1,40 @@
+<?php
+
+/**
+ * @file load the data from an external api and populate the fields of custom
+ * block instances.
+ */
+
+/**
+ * Implements hook_cron().
+ */
+
+function block_system_cron() {
+
+  $blocks = \Drupal::entityTypeManager()
+    ->getStorage('block_content');
+  $blocks = $blocks->loadByProperties(array('type' => 'stock_exchange_rate_card'));
+  $map = array(
+    'field_company_name' => 'Name',
+    'field_last_price' => 'LastPrice',
+    'field_change' => 'Change',
+  );
+  foreach ($blocks as $block) {
+    $field_values = _get_stock_field_values($block->field_symbol->value);
+    if($field_values->Status == 'SUCCESS') {
+      foreach ($map as $block_field => $api_field) {
+        $block->{$block_field} = $field_values->{$api_field};
+      }
+      $block->save();
+    }
+  }
+}
+
+function _get_stock_field_values($sym) {
+  $url = "http://dev.markitondemand.com/MODApis/Api/v2/Quote/json?symbol=" . $sym . "&callback=myFunction";
+  $http_client = new GuzzleHttp\Client();
+  $response = $http_client->get($url)->getBody();
+  $response_obj = json_decode((string)$response);
+
+  return $response_obj;
+}

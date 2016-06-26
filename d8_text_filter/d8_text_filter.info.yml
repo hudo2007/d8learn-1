@@ -1,0 +1,4 @@
+name: D8 text filter demo
+description: Creates a custom text filter
+core: 8.x
+type: module

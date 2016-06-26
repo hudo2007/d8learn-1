@@ -1,0 +1,4 @@
+name: D8 logging
+description: demo logging in d8
+core: 8.x
+type: module

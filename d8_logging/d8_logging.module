@@ -1,0 +1,15 @@
+<?php
+
+
+use Drupal\Core\Entity\EntityInterface;
+
+/**
+ * Implements hook_ENTITY_TYPE_update().
+ */
+function d8_logging_node_update(EntityInterface $entity) {
+  \Drupal::logger('d8_logging')
+    ->notice('Node with title %label of type %type has been updated', [
+      '%label' => $entity->label(),
+      '%type' => $entity->bundle(),
+    ]);
+}

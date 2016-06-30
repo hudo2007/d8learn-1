@@ -1,0 +1,13 @@
+<?php
+
+/**
+ * Implements hook_theme().
+ */
+function d8_field_formatter_theme() {
+  return [
+    'star_rating' => [
+      'variables' => ['rating' => NULL,],
+      'template' => 'decimal_to_rating'
+    ],
+  ];
+}

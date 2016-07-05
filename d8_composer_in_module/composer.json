@@ -1,0 +1,7 @@
+{
+  "name": "composer_in_a_module/forecast",
+  "type": "drupal-module",
+  "require": {
+    "guhelski/forecast-php": "1.1.*"
+  }
+}

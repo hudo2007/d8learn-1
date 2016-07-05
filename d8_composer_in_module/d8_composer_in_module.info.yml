@@ -1,0 +1,4 @@
+name: D8 composer demo
+description: demo on how to install libraries from d8 module using composer
+core: 8.x
+type: module
